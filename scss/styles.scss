@@ -1,0 +1,101 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.contenedor {
+  margin: 100px;
+}
+.transicion {
+  background-color: red;
+  transition: background-color 1s ease-in, transform 0.3s ease-out;
+
+  &:hover {
+    background-color: steelblue;
+    transform: translateX(-10px);
+  }
+}
+
+.btn-transicion {
+  margin-top: 10px;
+  background-color: steelblue;
+  padding: 10px;
+  border: none;
+  transition: background-color 0.3s ease-in, transform 1s ease-in-out;
+  &:hover {
+    background-color: red;
+    transform: scale(1.2);
+  }
+}
+
+.contenedor-animaciones {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+@mixin caja {
+  width: 200px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+@keyframes pulso {
+  0% {
+    transform: scale(1);
+  }
+  10% {
+    background-color: blue;
+  }
+  40% {
+    background-color: red;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rebote {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes rotacion {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pulso {
+  @include caja;
+  background-color: red;
+  animation: pulso 3s infinite ease-in-out;
+}
+
+.rebote {
+  @include caja;
+  background-color: blue;
+  animation: rebote 2s infinite linear;
+}
+.rotacion {
+  @include caja;
+
+  background-color: green;
+  animation: rotacion;
+  animation-duration: 3s;
+  animation-delay: 5s;
+  // animation-iteration-count: 2;
+}
